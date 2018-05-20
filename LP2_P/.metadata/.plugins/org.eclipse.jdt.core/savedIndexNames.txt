@@ -1,0 +1,8 @@
+INDEX VERSION 1.127+C:\Users\Lily\Desktop\LP2_P\.metadata\.plugins\org.eclipse.jdt.core
+3410403679.index
+1202835705.index
+2454410285.index
+3718709697.index
+1768825706.index
+307738548.index
+3714281901.index

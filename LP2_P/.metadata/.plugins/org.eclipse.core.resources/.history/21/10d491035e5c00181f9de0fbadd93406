@@ -1,0 +1,53 @@
+/**
+ * 
+ */
+
+
+function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 230,
+        'height': 65,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+
+
+
+
+
+function onSignIn(googleUser) {
+	var profile = googleUser.getBasicProfile();
+	var imagurl=profile.getImageUrl();
+	var nombre=profile.getName();
+	var correo=profile.getEmail();
+	document.getElementById("myImg").src = imagurl;
+	document.getElementById("name").innerHTML = nombre;
+	document.getElementById("myP").style.visibility = "hidden";
+	document.getElementById("status").innerHTML = 'Welcome '+nombre+
+	  '!<a href=success.jsp?correo='+correo+'&nombre='+nombre+
+			  '/>Continue with Google login</a></p>'
+}
+
+var finished_rendering = function() {
+	  console.log("finished rendering plugins");
+	  var spinner = document.getElementById("spinner");
+	  spinner.removeAttribute("style");
+	  spinner.removeChild(spinner.childNodes[0]);
+	}
+FB.Event.subscribe('xfbml.render', finished_rendering);
+
+
+function myFunction() {
+	gapi.auth2.getAuthInstance().disconnect();
+    location.reload();
+}
